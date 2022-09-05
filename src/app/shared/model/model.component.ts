@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModelService } from 'src/app/services/model.service';
 
 @Component({
@@ -6,12 +6,10 @@ import { ModelService } from 'src/app/services/model.service';
   templateUrl: './model.component.html',
   styleUrls: ['./model.component.css'],
 })
-export class ModelComponent implements OnInit {
+export class ModelComponent {
   @Input() modelID = '';
 
   constructor(public model: ModelService) {}
-
-  ngOnInit(): void {}
 
   closeModel() {
     this.model.toggleModel(this.modelID);
