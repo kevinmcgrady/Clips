@@ -33,3 +33,6 @@
 <p class="text-red-400" *ngIf="control.errors?.noMatch && control.touched">
   Both passwords must match
 </p>
+<p class="text-red-400" *ngIf="control.errors?.emailTaken && control.touched">
+  This email address is already taken
+</p>
