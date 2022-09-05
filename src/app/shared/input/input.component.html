@@ -30,3 +30,6 @@
   Passwords must be 8 characters long, have 1 uppercase letter, 1 lowercase
   letter and 1 number
 </p>
+<p class="text-red-400" *ngIf="control.errors?.noMatch && control.touched">
+  Both passwords must match
+</p>
