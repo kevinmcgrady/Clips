@@ -24,7 +24,7 @@ export class ManageComponent implements OnInit {
 
     this.clipService.getUserClips().subscribe((docs) => {
       this.clips = [];
-      docs.forEach((doc) => console.log({ ...doc.data(), docId: doc.id }));
+      docs.forEach((doc) => this.clips.push({ ...doc.data(), docId: doc.id }));
     });
   }
 
