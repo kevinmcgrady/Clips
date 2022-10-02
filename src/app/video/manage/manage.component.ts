@@ -11,6 +11,7 @@ import { ModelService } from 'src/app/services/model.service';
 export class ManageComponent implements OnInit {
   videoOrder = '1';
   clips: IClip[] = [];
+  activeClip: IClip | null = null;
 
   constructor(
     private router: Router,
@@ -42,6 +43,15 @@ export class ManageComponent implements OnInit {
 
   openModel($event: Event, clip: IClip) {
     $event.preventDefault();
+    this.activeClip = clip;
     this.model.toggleModel('editClip');
+  }
+
+  update($event: IClip) {
+    this.clips.forEach((clip, index) => {
+      if (clip.docId == $event.docId) {
+        this.clips[index].title = $event.title;
+      }
+    });
   }
 }
