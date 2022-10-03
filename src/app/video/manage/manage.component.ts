@@ -14,6 +14,7 @@ export class ManageComponent implements OnInit {
   clips: IClip[] = [];
   activeClip: IClip | null = null;
   sort$: BehaviorSubject<string>;
+  isLinkCoppied: boolean = false;
 
   constructor(
     private router: Router,
@@ -68,5 +69,22 @@ export class ManageComponent implements OnInit {
         this.clips.splice(index, 1);
       }
     });
+  }
+
+  async copyToClipboard($event: MouseEvent, docId: string | undefined) {
+    $event.preventDefault();
+
+    if (!docId) {
+      return;
+    }
+
+    const url = `${location.origin}/clip/${docId}`;
+    await navigator.clipboard.writeText(url);
+
+    this.isLinkCoppied = true;
+
+    setTimeout(() => {
+      this.isLinkCoppied = false;
+    }, 2000);
   }
 }

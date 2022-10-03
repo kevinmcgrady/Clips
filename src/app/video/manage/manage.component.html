@@ -1,3 +1,7 @@
+<div *ngIf="isLinkCoppied" class="container mx-auto my-8">
+  <app-alert [color]="'green'">Link Copied</app-alert>
+</div>
+
 <section class="container mx-auto my-8 bg-secondary p-6">
   <div class="rounded relative flex justify-between">
     <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl"
@@ -35,10 +39,12 @@
       <!-- Body -->
       <div class="p-6 text-2xl">
         <!-- Link -->
-        <a href="#" class="font-bold mb-2">{{ clip.title }}</a>
+        <a [routerLink]="['/', 'clip', clip.docId]" class="font-bold mb-2">{{
+          clip.title
+        }}</a>
         <a
-          href="#"
-          class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"
+          (click)="copyToClipboard($event, clip.docId)"
+          class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded cursor-pointer"
         >
           Copy Link
         </a>
