@@ -1,6 +1,6 @@
 # Clipz
 
-A video application where users can upload and share their clips
+A video application where users can upload and share their clips using Angular, Firebase, Tailwind and Web Assembly
 
 ### Features
 
